@@ -6,16 +6,10 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  safelist: [
-    'text-[#00ff95]', 
-    'border-[#00ff95]', 
-    'bg-[#1e1f23]',
-  ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      fontFamily: {
+        kodeMono: ['Kode Mono', 'monospace'],
       },
       animation: {
         fadeIn: "fadeIn 1.5s ease-in-out",
