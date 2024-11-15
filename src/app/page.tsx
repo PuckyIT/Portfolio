@@ -4,8 +4,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./components/ui/button";
-import { Card, CardContent } from "./components/ui/card";
 import emailjs from "emailjs-com";
 import { projects } from "./data/project";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
@@ -137,10 +135,7 @@ export default function Portfolio() {
               I'm Le Thanh Phat
             </span>
           </h1>
-          <Button
-            variant="outline"
-            className="text-[#00FFEE] hover:bg-[#00FFEE] hover:text-black transform transition-transform duration-300 w-28 h-16 mt-14"
-          >
+          <button className="text-[#00FFEE] hover:bg-[#00FFEE] hover:text-black transform transition-transform duration-300 w-28 h-16 mt-14 border-2 border-1-white">
             <Link
               href="/CV_LeThanhPhat.pdf"
               target="_blank"
@@ -148,27 +143,31 @@ export default function Portfolio() {
             >
               My CV
             </Link>
-          </Button>
+          </button>
         </div>
       </section>
       <hr className="my-12 mx-auto border-t-2 border-[#00FFEE] w-10/12 " />
 
       {/* Projects Section */}
-      <section id="projects" className=" w-10/12 mx-auto">
-        <h2 className="text-center text-3xl mb-16  text-white">
+      <section id="projects" className="w-10/12 mx-auto">
+        <h2 className="text-center text-3xl mb-16 text-white">
           {"</projects>"}
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
-            <Card className="bg-[#21272F] border-none h-10/12" key={index}>
-              <CardContent className="p-2">
+            <div
+              key={index}
+              className="bg-[#21272F] border-none h-auto rounded-lg shadow-xl overflow-hidden transform transition duration-300"
+            >
+              {/* CardContent */}
+              <div className="p-4">
                 <div className="mb-6">
                   <Image
                     src={project.image || "/images/default.png"}
                     alt={project.name}
                     width={600}
                     height={300}
-                    className="rounded-lg max-h-72 max-w-full"
+                    className="rounded-lg max-h-72 max-w-full object-cover"
                   />
                 </div>
                 <h3 className="text-xl text-[#00FFEE] mb-4">{project.name}</h3>
@@ -178,13 +177,13 @@ export default function Portfolio() {
                     <TechTag key={idx}>{tech}</TechTag>
                   ))}
                 </div>
-                <div className="flex space-x-4 text-2xl justify-center gap-4 bottom-0">
+                <div className="flex space-x-4 text-2xl justify-center gap-4">
                   {project.projectLink && (
                     <Link
                       href={project.projectLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white hover:text-[#00FFEE]/80 "
+                      className="text-white hover:text-[#00FFEE]/80"
                     >
                       <FaGithub />
                     </Link>
@@ -194,14 +193,14 @@ export default function Portfolio() {
                       href={project.liveLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white hover:text-[#00FFEE]/80 "
+                      className="text-white hover:text-[#00FFEE]/80"
                     >
                       <FaExternalLinkAlt />
                     </Link>
                   )}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
       </section>
@@ -329,7 +328,7 @@ export default function Portfolio() {
         Create by Le Thanh Phat @2024
       </h3>
 
-      {/* Scroll to Top Button */}
+      {/* Scroll to Top button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="fixed bottom-4 right-4 bg-[#00FFEE] text-black py-2 px-4 rounded-lg hover:bg-[#00FFEE]/80"

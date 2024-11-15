@@ -1,36 +1,32 @@
 export const projects = [
     {
-        name: "TopTop FE",
+        name: "TopTop - FE",
         description:
-            "I am developing a TikTok clone website named TopTop. This project involves custom design and implementation for both the front-end and back-end. The platform aims to replicate the core functionalities of TikTok while adding unique features that I have tailored myself.",
+            "The front-end of TopTop is a TikTok clone that replicates the core user interface and functionality of the popular video-sharing app. Built using Next.js and TypeScript, this platform provides a smooth and responsive user experience. The project uses Ant Design for UI components and Docker for containerization, ensuring scalability and ease of deployment.",
         technologies: [
             "TypeScript",
             "Next.js",
-            "NestJS",
-            "MongoDB",
             "Ant Design",
             "Docker",
         ],
         projectLink: 'https://github.com/PuckyIT/TopTop',
         liveLink: "https://top-top.vercel.app",
         image: "/images/toptop.png",
-    }, 
+    },
     {
-        name: "TopTop BE",
+        name: "TopTop - BE",
         description:
-            "I am developing a TikTok clone website named TopTop. This project involves custom design and implementation for both the front-end and back-end. The platform aims to replicate the core functionalities of TikTok while adding unique features that I have tailored myself.",
+            "The back-end of TopTop handles user authentication, video storage, and data management. Built with NestJS and MongoDB, this project supports the front-end functionality by providing APIs for user interaction and video processing. Docker is also used to ensure easy deployment and scalability, while Next.js is integrated for full-stack capabilities.",
         technologies: [
             "TypeScript",
-            "Next.js",
             "NestJS",
             "MongoDB",
-            "Ant Design",
             "Docker",
         ],
         projectLink: 'https://github.com/PuckyIT/TopTop-BE',
         liveLink: "https://toptop-be.onrender.com/api",
         image: "/images/toptopbe.png",
-    }, 
+    },
     {
         name: "E-learning Website (Admin Page)",
         description:
