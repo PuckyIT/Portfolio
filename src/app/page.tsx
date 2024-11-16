@@ -16,8 +16,8 @@ const TechTag = ({ children }: { children: React.ReactNode }) => (
 );
 
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("projects");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -30,8 +30,6 @@ export default function Portfolio() {
         top: sectionPosition,
         behavior: "smooth",
       });
-
-      setActiveSection(sectionId);
     }
   };
 
@@ -103,23 +101,55 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen bg-[#1A1B1E] text-white ">
       {/* Navigation */}
-      <nav className="fixed top-5 left-24 right-24 rounded-md py-4 bg-[#21272F] z-50">
+      <nav className="fixed top-5 left-4 right-4 md:left-24 md:right-24 rounded-md py-4 bg-[#21272F] z-50">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center space-x-52 py-4 text-2xl">
-            {["projects", "experience", "skills", "contact"].map((section) => (
-              <button
-                key={section}
-                onClick={() => scrollToSection(section)}
-                className={`capitalize ${
-                  activeSection === section
-                    ? "text-[#00FFEE] border-b-2 border-[#00FFEE]"
-                    : "text-white"
-                }`}
-              >
-                {section}
-              </button>
-            ))}
+          <div className="flex justify-center items-center">
+            {/* Hamburger Button */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-white md:hidden"
+            >
+              ☰
+            </button>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex justify-center space-x-48 py-4 text-xl font-bold">
+              {["projects", "experience", "skills", "contact"].map(
+                (section) => (
+                  <button
+                    key={section}
+                    onClick={() => scrollToSection(section)}
+                    className={`relative capitalize group`}
+                  >
+                    {section}
+                    <span
+                      className={`absolute top-7 left-0 h-[3px] w-0 bg-white transition-all duration-300 group-hover:w-full`}
+                    ></span>
+                  </button>
+                )
+              )}
+            </div>
           </div>
+
+          {/* Mobile Menu */}
+          {menuOpen && (
+            <div className="mt-4 bg-[#1A1B1E] rounded-lg p-4 text-center md:hidden font-bold">
+              {["projects", "experience", "skills", "contact"].map(
+                (section) => (
+                  <button
+                    key={section}
+                    onClick={() => {
+                      scrollToSection(section);
+                      setMenuOpen(false); // Close menu after clicking
+                    }}
+                    className={`block w-full py-2 capitalize `}
+                  >
+                    {section}
+                  </button>
+                )
+              )}
+            </div>
+          )}
         </div>
       </nav>
 

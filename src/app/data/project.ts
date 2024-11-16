@@ -34,7 +34,7 @@ export const projects = [
         technologies: ["Next.js", "TypeScript", "MUI", "Vuexy"],
         projectLink: "https://github.com/Lenal-P/Sgod-Admin",
         liveLink: null,
-        image: "/images/default.png",
+        image: "/images/sgod.png",
     },
     {
         name: "VocabTutorAI (Admin Page)",
