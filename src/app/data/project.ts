@@ -39,7 +39,7 @@ export const projects = [
     {
         name: "VocabTutorAI (Admin Page)",
         description:
-            "I built the front-end for the admin dashboard, enabling functionalities like login, registration, and management of collections, vocabularies, AI characters, and users (Add, Edit, Delete).",
+            "This is a team project to help users learn vocabulary better and integrates Gemini's AI. I built the front-end for the admin dashboard, enabling functionalities like login, registration, and management of collections, vocabularies, AI characters, and users (Add, Edit, Delete).",
         technologies: ["TypeScript", "Next.js", "Firebase", "MUI"],
         projectLink: "https://github.com/lehuubao1810/VocabTutorAI",
         liveLink: "https://vocabtutor.vercel.app",

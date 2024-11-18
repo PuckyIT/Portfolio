@@ -86,15 +86,16 @@ export default function Portfolio() {
     "CSS",
     "Sass/SCSS",
     "TailwindCSS",
+    "MUI",
     "JavaScript",
     "TypeScript",
     "ReactJS",
-    "React Native",
+    "NextJS",
+    "NestJS",
     "Git",
     "Redux",
     "Firebase",
     "NodeJS",
-    "ExpressJS",
     "MongoDB",
   ];
 
