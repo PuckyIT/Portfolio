@@ -24,7 +24,7 @@ export const projects = [
             "Docker",
         ],
         projectLink: 'https://github.com/PuckyIT/TopTop-BE',
-        liveLink: "https://toptop-be.onrender.com/api",
+        liveLink: "https://top-top-be.vercel.app/api",
         image: "/images/toptopbe.png",
     },
     {
