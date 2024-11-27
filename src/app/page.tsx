@@ -114,7 +114,7 @@ export default function Portfolio() {
             </button>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex justify-center space-x-48 py-4 text-xl font-bold">
+            <div className="hidden md:flex justify-around w-full py-4 text-xl font-bold">
               {["projects", "experience", "skills", "contact"].map(
                 (section) => (
                   <button
