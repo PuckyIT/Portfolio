@@ -2,15 +2,15 @@ export const projects = [
     {
         name: "TopTop - FE",
         description:
-            "The front-end of TopTop is a TikTok clone that replicates the core user interface and functionality of the popular video-sharing app. Built using Next.js and TypeScript, this platform provides a smooth and responsive user experience. The project uses Ant Design for UI components and Docker for containerization, ensuring scalability and ease of deployment.",
+            "The front-end of TopTop is a TikTok clone that replicates the core user interface and functionality of the popular video-sharing app. Built using Next.js and TypeScript, this platform provides a smooth and responsive user experience. The project uses Tailwind CSS for UI components and Docker for containerization, ensuring scalability and ease of deployment.",
         technologies: [
             "TypeScript",
             "Next.js",
-            "Ant Design",
+            "Tailwind CSS",
             "Docker",
         ],
-        projectLink: 'https://github.com/PuckyIT/TopTop',
-        liveLink: "https://top-top.vercel.app",
+        projectLink: 'https://github.com/PuckyIT/TopTop-FE',
+        liveLink: "https://top-top-fe.vercel.app",
         image: "/images/toptop.png",
     },
     {
@@ -23,8 +23,8 @@ export const projects = [
             "MongoDB",
             "Docker",
         ],
-        projectLink: 'https://github.com/PuckyIT/TopTop-BE',
-        liveLink: "https://top-top-be.vercel.app/api",
+        projectLink: 'https://github.com/PuckyIT/TopTop-BE-Render',
+        liveLink: "https://toptop-be.onrender.com",
         image: "/images/toptopbe.png",
     },
     {
