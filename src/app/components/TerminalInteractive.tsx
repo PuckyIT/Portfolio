@@ -48,7 +48,7 @@ export function TerminalInteractive() {
     const trimmed = cmd.trim().toLowerCase();
     if (!trimmed) return;
 
-    let output: string | JSX.Element = "";
+    let output: string | ReactNode = "";
 
     switch (trimmed) {
       case "help":
