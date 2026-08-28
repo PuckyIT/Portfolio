@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { personalInfo } from "../data/project";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   MapPin,

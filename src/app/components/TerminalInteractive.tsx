@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, ReactNode } from "react";
 import { personalInfo, productionProjects, workExperience, skillCategories } from "../data/project";
 import { Terminal, CornerDownLeft, RotateCcw } from "lucide-react";
 
 interface TerminalLog {
   id: string;
   command: string;
-  output: string | JSX.Element;
+  output: string | ReactNode;
 }
 
 const defaultInitialHistory: TerminalLog[] = [
