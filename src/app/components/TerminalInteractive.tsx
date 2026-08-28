@@ -38,10 +38,17 @@ const defaultInitialHistory: TerminalLog[] = [
 export function TerminalInteractive() {
   const [input, setInput] = useState("");
   const [history, setHistory] = useState<TerminalLog[]>(defaultInitialHistory);
-  const terminalEndRef = useRef<HTMLDivElement>(null);
+  const isFirstRender = useRef(true);
+  const consoleBodyRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (consoleBodyRef.current) {
+      consoleBodyRef.current.scrollTop = consoleBodyRef.current.scrollHeight;
+    }
   }, [history]);
 
   const executeCommand = (cmd: string) => {
@@ -247,7 +254,11 @@ export function TerminalInteractive() {
           </div>
 
           {/* Console Body */}
-          <div className="p-4 sm:p-6 space-y-4 max-h-[420px] overflow-y-auto font-mono text-xs" suppressHydrationWarning>
+          <div
+            ref={consoleBodyRef}
+            className="p-4 sm:p-6 space-y-4 max-h-[420px] overflow-y-auto font-mono text-xs"
+            suppressHydrationWarning
+          >
             {history.map((log) => (
               <div key={log.id} className="space-y-2">
                 <div className="flex items-center gap-2 text-[#7a7a75]">
@@ -259,7 +270,6 @@ export function TerminalInteractive() {
                 </div>
               </div>
             ))}
-            <div ref={terminalEndRef} />
           </div>
 
           {/* Prompt Input Bar */}
