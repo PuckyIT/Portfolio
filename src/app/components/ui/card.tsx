@@ -1,38 +1,58 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-// src/components/ui/card.tsx
 import React from "react";
+import clsx from "clsx";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const Card: React.FC<CardProps> = ({ children, className, ...props }) => (
-  <div className={`rounded-lg shadow-md bg-white p-4 ${className}`} {...props}>
+export const Card: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <div
+    className={clsx(
+      "rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md transition-all duration-300",
+      className
+    )}
+    {...props}
+  >
     {children}
   </div>
 );
 
-interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const CardHeader: React.FC<CardHeaderProps> = ({ children, ...props }) => (
-  <div className="mb-4" {...props}>
+export const CardHeader: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <div className={clsx("p-6 pb-3", className)} {...props}>
     {children}
   </div>
 );
 
-interface CardTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
-export const CardTitle: React.FC<CardTitleProps> = ({ children, ...props }) => (
-  <h3 className="text-xl font-bold" {...props}>
+export const CardTitle: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <h3 className={clsx("text-xl font-bold text-slate-100", className)} {...props}>
     {children}
   </h3>
 );
 
-interface CardDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
-export const CardDescription: React.FC<CardDescriptionProps> = ({ children, ...props }) => (
-  <p className="text-gray-600" {...props}>
+export const CardDescription: React.FC<React.HTMLAttributes<HTMLParagraphElement>> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <p className={clsx("text-sm text-slate-400 leading-relaxed", className)} {...props}>
     {children}
   </p>
 );
 
-interface CardContentProps extends React.HTMLAttributes<HTMLDivElement> {}
-export const CardContent: React.FC<CardContentProps> = ({ children, ...props }) => (
-  <div {...props}>
+export const CardContent: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  children,
+  className,
+  ...props
+}) => (
+  <div className={clsx("p-6 pt-0", className)} {...props}>
     {children}
   </div>
 );
