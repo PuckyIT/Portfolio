@@ -42,7 +42,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
             {/* Status Chip */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1c1c1a] border border-[#2e2e2a] text-xs font-mono text-[#a0a09b]">
               <span className="w-2 h-2 rounded-full bg-[#c8a44e]" />
-              <span>Full-Stack & DevOps Engineer</span>
+              <span>Software Engineer</span>
               <span className="text-[#5c5c58]">|</span>
               <span className="text-[#7a7a75]">Ho Chi Minh City, Vietnam</span>
             </div>
@@ -56,13 +56,13 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
                 {personalInfo.role}
               </p>
               <p className="text-sm sm:text-base text-[#8a8a85]">
-                Specializing in {personalInfo.specialization} · Formerly at Innotech Vietnam
+                {personalInfo.specialization} · Innotech Vietnam
               </p>
             </div>
 
             {/* Overview Bio */}
             <p className="text-[#a0a09b] text-[15px] sm:text-base leading-relaxed max-w-2xl">
-              Software Engineer with 2+ years of hands-on experience architecting, deploying, and maintaining high-throughput web applications for enterprise HRM, CRM, education, and international trade operations. Proven track record across modern React/Next.js interfaces, robust NestJS/FastAPI microservices, vector databases, and containerized CI/CD environments.
+              {personalInfo.summary}
             </p>
 
             {/* Core Competencies Row */}
@@ -97,7 +97,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               </button>
               <a
                 href={personalInfo.cvUrl}
-                download="CV_Le_Thanh_Phat.pdf"
+                download="Resume_Le_Thanh_Phat.pdf"
                 className="px-5 py-2.5 rounded-lg text-[#eeeeec] bg-[#1a1a18] border border-[#2e2e2a] hover:border-[#444440] text-sm font-medium flex items-center gap-2 transition-colors"
               >
                 <Download className="w-4 h-4 text-[#c8a44e]" />
@@ -184,8 +184,8 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
 
                 <div className="space-y-1.5 font-mono text-xs">
                   {[
-                    { name: "KingWork HRM", tech: "NestJS · TypeORM · Docker", tag: "HRM & Operations" },
                     { name: "GEXIM AI Logistics", tech: "FastAPI · Qdrant · Redis", tag: "AI Logistics" },
+                    { name: "KingWork HRM", tech: "NestJS · TypeORM · Docker", tag: "HRM & Operations" },
                     { name: "Spec2s Multi-Agent", tech: "LangGraph · Microfrontends", tag: "Agentic AI" },
                     { name: "Ellacy EdTech Network", tech: "Socket.IO · OpenAI · i18n", tag: "Global EdTech" },
                   ].map((p, pIdx) => (
@@ -205,21 +205,37 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
                 </div>
               </div>
 
-              {/* GitHub Link */}
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between p-2.5 rounded-lg bg-[#121211] border border-[#20201d] hover:border-[#333330] transition-colors group"
-              >
-                <div className="flex items-center gap-2">
-                  <Github className="w-4 h-4 text-[#8a8a85] group-hover:text-[#c8a44e] transition-colors" />
-                  <span className="text-xs font-mono text-[#a0a09b] group-hover:text-[#eeeeec] transition-colors">
-                    github.com/Lenal-P
-                  </span>
+              {/* GitHub Links Grid */}
+              <div className="space-y-1.5 pt-1">
+                <div className="text-[11px] font-mono text-[#7a7a75]">
+                  GitHub Repositories & Profiles
                 </div>
-                <ArrowRight className="w-3.5 h-3.5 text-[#5c5c58] group-hover:text-[#c8a44e] group-hover:translate-x-0.5 transition-all" />
-              </a>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {personalInfo.githubProfiles.map((gh) => (
+                    <a
+                      key={gh.username}
+                      href={gh.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-2.5 rounded-lg bg-[#121211] border border-[#20201d] hover:border-[#383833] transition-colors group"
+                      title={`GitHub: ${gh.name} (@${gh.username})`}
+                    >
+                      <div className="flex items-center gap-2 min-w-0">
+                        <Github className="w-3.5 h-3.5 text-[#8a8a85] group-hover:text-[#c8a44e] transition-colors shrink-0" />
+                        <div className="truncate">
+                          <div className="text-xs font-mono text-[#eeeeec] font-semibold truncate">
+                            {gh.username}
+                          </div>
+                          <div className="text-[10px] font-mono text-[#6b6b66] truncate">
+                            {gh.name}
+                          </div>
+                        </div>
+                      </div>
+                      <ArrowRight className="w-3 h-3 text-[#5c5c58] group-hover:text-[#c8a44e] group-hover:translate-x-0.5 transition-all shrink-0 ml-1" />
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

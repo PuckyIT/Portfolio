@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, ReactNode } from "react";
-import { personalInfo, productionProjects, workExperience, skillCategories } from "../data/project";
+import { personalInfo, productionProjects, workExperience, skillCategories, educationInfo } from "../data/project";
 import { Terminal, CornerDownLeft, RotateCcw } from "lucide-react";
 
 interface TerminalLog {
@@ -17,14 +17,14 @@ const defaultInitialHistory: TerminalLog[] = [
     output: (
       <div className="space-y-1.5 text-xs font-mono">
         <div className="text-[#c8a44e] font-bold">
-          LE THANH PHAT — Full-Stack & DevOps Engineer
+          LE THANH PHAT — SOFTWARE ENGINEER
         </div>
         <div className="text-[#444440]">
           ————————————————————————————————————————————
         </div>
-        <div><span className="text-[#7a7a75]">Role:</span> Full-Stack & DevOps Engineer</div>
-        <div><span className="text-[#7a7a75]">Core Stack:</span> React, Next.js, NestJS, FastAPI, PostgreSQL, Redis, Qdrant, Docker</div>
-        <div><span className="text-[#7a7a75]">AI Tooling:</span> LangGraph, Kiro, Claude, Antigravity, Windsurf</div>
+        <div><span className="text-[#7a7a75]">Role:</span> Software Engineer (Full-Stack & AI Systems)</div>
+        <div><span className="text-[#7a7a75]">Core Stack:</span> React, Next.js, TypeScript, NestJS, FastAPI, PostgreSQL, Qdrant, Redis, Docker</div>
+        <div><span className="text-[#7a7a75]">AI Tools:</span> Kiro, Claude, Antigravity, Windsurf, LangGraph</div>
         <div><span className="text-[#7a7a75]">Location:</span> Ho Chi Minh City, Vietnam</div>
         <div><span className="text-[#7a7a75]">Status:</span> <span className="text-emerald-400 font-medium">Available for High-Impact Roles</span></div>
         <div className="text-[#7a7a75] pt-1">
@@ -52,22 +52,27 @@ export function TerminalInteractive() {
   }, [history]);
 
   const executeCommand = (cmd: string) => {
-    const trimmed = cmd.trim().toLowerCase();
-    if (!trimmed) return;
+    // If input is empty, default to "help" command so clicking Run always responds
+    const trimmed = (cmd || "").trim().toLowerCase();
+    const effectiveCmd = trimmed || "help";
 
     let output: string | ReactNode = "";
 
-    switch (trimmed) {
+    switch (effectiveCmd) {
       case "help":
+      case "?":
+      case "commands":
         output = (
           <div className="space-y-1.5 text-xs font-mono">
             <div className="text-[#c8a44e] font-semibold">Available Commands:</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[#a0a09b] pt-1">
               <div><span className="text-[#eeeeec] font-bold">summary</span> - Background & biography</div>
-              <div><span className="text-[#eeeeec] font-bold">projects</span> - Production platforms list</div>
-              <div><span className="text-[#eeeeec] font-bold">experience</span> - Professional career timeline</div>
-              <div><span className="text-[#eeeeec] font-bold">skills</span> - Full technical radar</div>
+              <div><span className="text-[#eeeeec] font-bold">projects</span> - Selected production systems</div>
+              <div><span className="text-[#eeeeec] font-bold">experience</span> - Career timeline & achievements</div>
+              <div><span className="text-[#eeeeec] font-bold">skills</span> - Full technical radar matrix</div>
+              <div><span className="text-[#eeeeec] font-bold">education</span> - Academic background</div>
               <div><span className="text-[#eeeeec] font-bold">contact</span> - Phone, Email & GitHub</div>
+              <div><span className="text-[#eeeeec] font-bold">cv</span> - Download official CV PDF</div>
               <div><span className="text-[#eeeeec] font-bold">hire</span> - Why collaborate with Phat</div>
               <div><span className="text-[#eeeeec] font-bold">clear</span> - Clear terminal output</div>
             </div>
@@ -78,6 +83,8 @@ export function TerminalInteractive() {
       case "cat summary":
       case "summary":
       case "bio":
+      case "whoami":
+      case "about":
         output = (
           <div className="text-xs font-mono space-y-1.5 text-[#a0a09b]">
             <div className="text-[#c8a44e] font-bold">[ENGINEER SUMMARY]</div>
@@ -88,6 +95,11 @@ export function TerminalInteractive() {
 
       case "projects":
       case "ls projects":
+      case "ls":
+      case "gexim":
+      case "kingwork":
+      case "spec2s":
+      case "ellacy":
         output = (
           <div className="text-xs font-mono space-y-2">
             <div className="text-[#c8a44e] font-bold">[PRODUCTION PLATFORMS]</div>
@@ -96,7 +108,7 @@ export function TerminalInteractive() {
                 <div className="text-[#eeeeec] font-bold">
                   {idx + 1}. {p.name} ({p.period})
                 </div>
-                <div className="text-[#7a7a75] text-[11px] mt-0.5">{p.summary}</div>
+                <div className="text-[#7a7a75] text-[11px] mt-0.5">{p.purpose}</div>
                 <div className="text-[#c8a44e] text-[11px] mt-1">
                   Stack: {p.technologies.all.join(", ")}
                 </div>
@@ -107,11 +119,13 @@ export function TerminalInteractive() {
         break;
 
       case "experience":
+      case "work":
+      case "career":
         output = (
           <div className="text-xs font-mono space-y-2">
             <div className="text-[#c8a44e] font-bold">[PROFESSIONAL EXPERIENCE]</div>
             <div className="text-[#eeeeec] font-bold">
-              Software Engineer @ Innotech Vietnam (2024 - 2026)
+              Software Engineer @ Innotech Vietnam (2024 - Present)
             </div>
             <div className="text-[#7a7a75] text-[11px]">Ho Chi Minh City, Vietnam</div>
             <ul className="space-y-1 text-[#a0a09b] pt-1">
@@ -127,6 +141,7 @@ export function TerminalInteractive() {
         break;
 
       case "skills":
+      case "stack":
         output = (
           <div className="text-xs font-mono space-y-2">
             <div className="text-[#c8a44e] font-bold">[CORE TECHNICAL STACK]</div>
@@ -140,13 +155,42 @@ export function TerminalInteractive() {
         );
         break;
 
+      case "education":
+      case "degree":
+        output = (
+          <div className="text-xs font-mono space-y-1.5 text-[#a0a09b]">
+            <div className="text-[#c8a44e] font-bold">[ACADEMIC BACKGROUND]</div>
+            <div className="text-[#eeeeec] font-semibold">{educationInfo.institution}</div>
+            <div className="text-[#c8a44e]">{educationInfo.degree} ({educationInfo.period})</div>
+            <div className="text-[#7a7a75]">{educationInfo.major} • {educationInfo.location}</div>
+          </div>
+        );
+        break;
+
+      case "cv":
+      case "download":
+      case "resume":
+        output = (
+          <div className="text-xs font-mono space-y-1.5 text-[#a0a09b]">
+            <div className="text-[#c8a44e] font-bold">[RESUME FILE]</div>
+            <div>Official CV: <a href={personalInfo.cvUrl} download="Resume_Le_Thanh_Phat.pdf" className="text-[#c8a44e] underline font-bold">Resume_Le_Thanh_Phat.pdf</a></div>
+            <div className="text-[#7a7a75]">Click the link to download the document.</div>
+          </div>
+        );
+        break;
+
       case "contact":
         output = (
           <div className="text-xs font-mono space-y-1.5 text-[#a0a09b]">
             <div className="text-[#c8a44e] font-bold">[DIRECT CONTACT CHANNELS]</div>
             <div><span className="text-[#7a7a75]">Email:</span> <a href={`mailto:${personalInfo.email}`} className="text-[#c8a44e] underline">{personalInfo.email}</a></div>
             <div><span className="text-[#7a7a75]">Phone:</span> {personalInfo.phone}</div>
-            <div><span className="text-[#7a7a75]">GitHub:</span> <a href={personalInfo.github} target="_blank" rel="noreferrer" className="text-[#c8a44e] underline">{personalInfo.github}</a></div>
+            <div>
+              <span className="text-[#7a7a75]">GitHub (PuckyIT):</span> <a href="https://github.com/PuckyIT" target="_blank" rel="noreferrer" className="text-[#c8a44e] underline">github.com/PuckyIT</a>
+            </div>
+            <div>
+              <span className="text-[#7a7a75]">GitHub (Lenal-P):</span> <a href="https://github.com/Lenal-P" target="_blank" rel="noreferrer" className="text-[#c8a44e] underline">github.com/Lenal-P</a>
+            </div>
             <div><span className="text-[#7a7a75]">Location:</span> {personalInfo.location}</div>
           </div>
         );
@@ -182,17 +226,16 @@ export function TerminalInteractive() {
       ...prev,
       {
         id: `cmd-${prev.length}-${Date.now()}`,
-        command: cmd,
+        command: trimmed || "help",
         output,
       },
     ]);
     setInput("");
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      executeCommand(input);
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    executeCommand(input);
   };
 
   return (
@@ -215,10 +258,12 @@ export function TerminalInteractive() {
         {/* Preset Command Chips */}
         <div className="flex flex-wrap gap-2 mb-4">
           {[
+            "help",
             "summary",
             "projects",
             "experience",
             "skills",
+            "education",
             "contact",
             "hire",
             "clear",
@@ -226,7 +271,7 @@ export function TerminalInteractive() {
             <button
               key={cmd}
               onClick={() => executeCommand(cmd)}
-              className="px-3 py-1 rounded-md bg-[#171715] hover:bg-[#1f1f1c] text-[#a0a09b] hover:text-[#eeeeec] border border-[#272724] text-xs font-mono transition-all flex items-center gap-1.5"
+              className="px-3 py-1 rounded-md bg-[#171715] hover:bg-[#1f1f1c] text-[#a0a09b] hover:text-[#eeeeec] border border-[#272724] text-xs font-mono transition-all flex items-center gap-1.5 cursor-pointer"
             >
               <span className="text-[#c8a44e]">$</span>
               <span>{cmd}</span>
@@ -239,13 +284,14 @@ export function TerminalInteractive() {
           {/* Top Bar */}
           <div className="px-4 py-3 bg-[#171715] border-b border-[#232320] flex items-center justify-between">
             <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 animate-pulse" />
               <span className="text-xs font-mono text-[#7a7a75]">
                 phat@engineer: ~/portfolio-terminal
               </span>
             </div>
             <button
               onClick={() => setHistory([])}
-              className="text-xs font-mono text-[#7a7a75] hover:text-[#c8a44e] flex items-center gap-1 transition-colors"
+              className="text-xs font-mono text-[#7a7a75] hover:text-[#c8a44e] flex items-center gap-1 transition-colors cursor-pointer"
               title="Reset Console"
             >
               <RotateCcw className="w-3 h-3" />
@@ -272,8 +318,11 @@ export function TerminalInteractive() {
             ))}
           </div>
 
-          {/* Prompt Input Bar */}
-          <div className="p-3 bg-[#171715] border-t border-[#232320] flex items-center gap-2">
+          {/* Prompt Input Form */}
+          <form
+            onSubmit={handleSubmit}
+            className="p-3 bg-[#171715] border-t border-[#232320] flex items-center gap-2"
+          >
             <span className="text-[#c8a44e] font-mono text-xs font-bold pl-2">
               phat@engineer:~$
             </span>
@@ -281,18 +330,18 @@ export function TerminalInteractive() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Type 'help', 'projects', 'contact', 'hire'..."
-              className="flex-1 bg-transparent text-[#eeeeec] font-mono text-xs focus:outline-none placeholder:text-[#444440]"
+              placeholder="Type 'help', 'projects', 'skills', 'contact'..."
+              className="flex-1 bg-transparent text-[#eeeeec] font-mono text-xs focus:outline-none placeholder:text-[#555550]"
             />
             <button
-              onClick={() => executeCommand(input)}
-              className="px-3.5 py-1.5 rounded-lg bg-[#c8a44e] hover:bg-[#d4b35c] text-[#111110] font-bold font-mono text-xs flex items-center gap-1 transition-all"
+              type="submit"
+              className="px-3.5 py-1.5 rounded-lg bg-[#c8a44e] hover:bg-[#d4b35c] active:scale-95 text-[#111110] font-bold font-mono text-xs flex items-center gap-1 transition-all cursor-pointer shadow-sm"
+              title="Execute command (or run 'help' if blank)"
             >
               <span>Run</span>
               <CornerDownLeft className="w-3.5 h-3.5" />
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </section>

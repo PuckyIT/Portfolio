@@ -151,29 +151,35 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* GitHub & Location Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-[#171715] border border-[#272724] hover:border-[#383833] transition-all flex items-center justify-between group"
-              >
-                <div className="flex items-center gap-3">
-                  <Github className="w-5 h-5 text-[#c8a44e]" />
-                  <div>
-                    <div className="text-xs font-mono text-[#7a7a75]">GitHub</div>
-                    <div className="text-sm font-bold text-[#eeeeec] font-mono">Lenal-P</div>
-                  </div>
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-[#5c5c58] group-hover:text-[#c8a44e] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </a>
+            {/* GitHub Profiles & Location */}
+            <div className="space-y-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {personalInfo.githubProfiles.map((gh) => (
+                  <a
+                    key={gh.username}
+                    href={gh.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3.5 rounded-xl bg-[#171715] border border-[#272724] hover:border-[#383833] transition-all flex items-center justify-between group"
+                    title={`GitHub Profile: ${gh.name}`}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <Github className="w-4 h-4 text-[#c8a44e] shrink-0" />
+                      <div className="min-w-0 truncate">
+                        <div className="text-[10px] font-mono text-[#7a7a75]">{gh.tag}</div>
+                        <div className="text-xs font-bold text-[#eeeeec] font-mono truncate">{gh.username}</div>
+                      </div>
+                    </div>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#5c5c58] group-hover:text-[#c8a44e] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
+                  </a>
+                ))}
+              </div>
 
-              <div className="p-4 rounded-xl bg-[#171715] border border-[#272724] flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-[#c8a44e] shrink-0" />
+              <div className="p-3.5 rounded-xl bg-[#171715] border border-[#272724] flex items-center gap-3">
+                <MapPin className="w-4 h-4 text-[#c8a44e] shrink-0" />
                 <div>
-                  <div className="text-xs font-mono text-[#7a7a75]">Location</div>
-                  <div className="text-xs font-bold text-[#eeeeec]">Ho Chi Minh City</div>
+                  <div className="text-[10px] font-mono text-[#7a7a75]">LOCATION</div>
+                  <div className="text-xs font-bold text-[#eeeeec]">{personalInfo.location}</div>
                 </div>
               </div>
             </div>
@@ -181,11 +187,11 @@ export function ContactSection() {
             {/* Download CV Action */}
             <a
               href={personalInfo.cvUrl}
-              download="CV_Le_Thanh_Phat.pdf"
+              download="Resume_Le_Thanh_Phat.pdf"
               className="w-full py-3.5 rounded-xl bg-[#c8a44e] hover:bg-[#d4b35c] text-[#111110] font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-md"
             >
               <Download className="w-4 h-4" />
-              <span>Download Official CV (PDF)</span>
+              <span>Download Official CV (Resume_Le_Thanh_Phat.pdf)</span>
             </a>
           </div>
 

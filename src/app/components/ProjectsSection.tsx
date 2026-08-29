@@ -88,9 +88,15 @@ export function ProjectsSection() {
                   </div>
                 </div>
 
-                <p className="text-[#a0a09b] text-xs sm:text-sm leading-relaxed line-clamp-3">
-                  {project.summary}
-                </p>
+                {/* Purpose Callout */}
+                <div className="p-3 rounded-lg bg-[#121211] border border-[#20201d] space-y-1">
+                  <div className="text-[10px] font-mono text-[#c8a44e] font-semibold uppercase tracking-wider">
+                    Purpose & Objective:
+                  </div>
+                  <p className="text-[#a0a09b] text-xs leading-relaxed line-clamp-2">
+                    {project.purpose}
+                  </p>
+                </div>
 
                 {/* Metrics Preview */}
                 {project.metrics && (
@@ -111,14 +117,26 @@ export function ProjectsSection() {
                   </div>
                 )}
 
-                {/* Key Highlights */}
+                {/* Workflow Summary Pills */}
                 <div className="space-y-1.5 pt-1">
-                  {project.highlights.slice(0, 3).map((hl, hlIdx) => (
-                    <div key={hlIdx} className="flex items-center gap-2 text-xs text-[#8a8a85] font-mono">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#c8a44e] shrink-0" />
-                      <span className="truncate">{hl}</span>
-                    </div>
-                  ))}
+                  <div className="text-[11px] font-mono text-[#7a7a75] flex items-center justify-between">
+                    <span>End-to-End Workflow Stages:</span>
+                    <span className="text-[#c8a44e]">{project.workflow.length} Steps</span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-1.5">
+                    {project.workflow.map((step) => (
+                      <div
+                        key={step.stepNumber}
+                        className="px-2 py-1 rounded bg-[#121211] border border-[#20201d] text-[11px] font-mono text-[#8a8a85] truncate flex items-center gap-1.5"
+                        title={step.title}
+                      >
+                        <span className="w-3.5 h-3.5 rounded-full bg-[#c8a44e]/20 text-[#c8a44e] text-[10px] flex items-center justify-center font-bold shrink-0">
+                          {step.stepNumber}
+                        </span>
+                        <span className="truncate">{step.title}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -145,7 +163,7 @@ export function ProjectsSection() {
                   className="w-full py-2.5 rounded-lg bg-[#1c1c1a] hover:bg-[#c8a44e] hover:text-[#111110] text-[#eeeeec] border border-[#2e2e2a] hover:border-[#c8a44e] font-mono text-xs font-semibold flex items-center justify-center gap-2 transition-all shadow-sm"
                 >
                   <Eye className="w-3.5 h-3.5" />
-                  <span>View Architecture & Specs</span>
+                  <span>View Full Architecture & Workflow</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
               </div>

@@ -16,18 +16,13 @@ export function Footer({ onNavigate }: FooterProps) {
     <footer className="py-12 bg-[#0c0c0b] border-t border-[#1f1f1d] text-left relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#232320]">
-          {/* Logo & Info */}
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[#171715] border border-[#272724] flex items-center justify-center text-[#c8a44e] font-mono font-bold text-xs">
-              TP
+          {/* Brand & Role */}
+          <div className="space-y-1">
+            <div className="font-bold text-[#eeeeec] text-sm tracking-tight font-mono">
+              {personalInfo.name}
             </div>
-            <div>
-              <div className="font-semibold text-[#eeeeec] text-sm">
-                {personalInfo.name}
-              </div>
-              <div className="text-xs text-[#7a7a75] font-mono">
-                {personalInfo.role} · {personalInfo.specialization}
-              </div>
+            <div className="text-xs text-[#7a7a75] font-mono">
+              {personalInfo.role} · {personalInfo.specialization}
             </div>
           </div>
 
