@@ -1,7 +1,9 @@
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/HeroSection";
-import { ExperienceSection } from "./components/ExperienceSection";
+import { TechMarquee } from "./components/TechMarquee";
+import { StatsBand } from "./components/StatsBand";
 import { ProjectsSection } from "./components/ProjectsSection";
+import { ExperienceSection } from "./components/ExperienceSection";
 import { SkillsSection } from "./components/SkillsSection";
 import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
@@ -12,8 +14,10 @@ export default function Portfolio() {
       <Navbar />
       <main>
         <HeroSection />
-        <ExperienceSection />
+        <TechMarquee />
+        <StatsBand />
         <ProjectsSection />
+        <ExperienceSection />
         <SkillsSection />
         <ContactSection />
       </main>

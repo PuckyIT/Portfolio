@@ -9,14 +9,11 @@ const config: Config = {
         mono: ["var(--font-geist-mono)", "monospace"],
       },
       colors: {
-        // Single accent. Neutrals use Tailwind's slate scale.
-        brand: {
-          50: "#eff6ff",
-          100: "#dbeafe",
-          200: "#bfdbfe",
-          500: "#3b82f6",
-          600: "#2563eb",
-          700: "#1d4ed8",
+        // Page canvas + raised surface. Text uses zinc; accents use violet → sky → cyan.
+        ink: {
+          950: "#050608",
+          900: "#0b0d12",
+          800: "#12151c",
         },
       },
     },
