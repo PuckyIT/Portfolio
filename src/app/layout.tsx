@@ -14,36 +14,30 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-const kodeMono = localFont({
-  src: "./fonts/KodeMono-VariableFont_wght.ttf",
-  variable: "--font-kode-mono",
-  weight: "400 700",
-});
+const description =
+  "Le Thanh Phat — Software Engineer with 2+ years building full-stack web apps and AI-integrated systems with React, Next.js, NestJS, FastAPI and Docker.";
 
 export const metadata: Metadata = {
-  title: "Le Thanh Phat | Software Engineer - Full-Stack & DevOps",
-  description:
-    "Portfolio of Le Thanh Phat - Software Engineer with 2+ years experience in Full-Stack development, DevOps, HRM, CRM, AI Logistics, and Multi-Agent engineering.",
+  title: "Le Thanh Phat | Software Engineer",
+  description,
   keywords: [
     "Le Thanh Phat",
     "Software Engineer",
     "Full-Stack Developer",
-    "DevOps",
     "Next.js",
     "React",
     "NestJS",
     "FastAPI",
     "PostgreSQL",
     "Docker",
-    "AI Coding"
+    "AI",
   ],
   authors: [{ name: "Le Thanh Phat" }],
   openGraph: {
-    title: "Le Thanh Phat | Software Engineer - Full-Stack & DevOps",
-    description:
-      "Explore enterprise platforms, architecture highlights, and engineering experience of Le Thanh Phat.",
-    type: "website"
-  }
+    title: "Le Thanh Phat | Software Engineer",
+    description,
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -52,10 +46,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} ${kodeMono.variable} font-sans antialiased bg-[#111110] text-[#eeeeec] min-h-screen flex flex-col`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
       </body>
