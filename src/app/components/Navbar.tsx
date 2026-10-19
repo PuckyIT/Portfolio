@@ -6,6 +6,7 @@ import { useLenis } from "lenis/react";
 import { Download, Menu, X } from "lucide-react";
 import { personalInfo } from "../data/project";
 import { easeOut } from "./motion";
+import { Logo } from "./Logo";
 
 const navItems = [
   { id: "work", label: "Work" },
@@ -58,8 +59,13 @@ export function Navbar() {
         className="fixed inset-x-0 top-0 z-40 bg-gradient-to-b from-ink-950/90 via-ink-950/50 to-transparent"
       >
         <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5 sm:px-8">
-          <a href="#hero" className="relative z-10 text-lg font-semibold tracking-tight text-white">
-            Phat<span className="text-sky-400">.</span>
+          <a
+            href="#hero"
+            aria-label={`${personalInfo.name} — home`}
+            className="group relative z-10 flex items-center gap-2.5 text-lg font-semibold tracking-tight text-white"
+          >
+            <Logo className="h-9 w-9 transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110" />
+            Thanh Phat
           </a>
 
           <nav
